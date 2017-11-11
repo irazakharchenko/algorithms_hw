@@ -6,8 +6,8 @@ class Node():
         self.next = next
 
 class  HashTable:
-    PRIME_NUM = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 2999,  299993]
-    POWER_2 = [ 2, 4, 8, 16,  2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144]
+    PRIME_NUM = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 2477, 2999, 249989, 299993]
+    POWER_2 = [2, 4, 8, 16, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144]
     A = (sqrt(5) - 1) / 2
 
 
@@ -41,7 +41,7 @@ class  HashTable:
         return typeToUse[left]
 
     def add_element_1(self):
-        self.m = self.nearest(3 * len(self.val))
+        self.m = self.nearest((3 * len(self.val)))
         self.hash_table = [None]*self.m
         for el in self.val:
             ind = self.hash_1(el)
@@ -53,7 +53,7 @@ class  HashTable:
                 self.hash_table[ind] = Node(el)
 
     def add_element_2(self):
-        self.m = self.nearest(3 * len(self.val))
+        self.m = self.nearest((3 * len(self.val)))
         self.hash_table = [None] * self.m
         for el in self.val:
             ind = self.hash_2(el)
@@ -65,7 +65,7 @@ class  HashTable:
                 self.hash_table[ind] = Node(el)
 
     def add_element_3(self):
-        self.m = self.nearest(3 * len(self.val))
+        self.m = self.nearest(int(3 * len(self.val)))
         self.hash_table = [None] * self.m
         for el in self.val:
             ind = self.hash_1(el)
@@ -79,7 +79,7 @@ class  HashTable:
             self.hash_table[ind] = Node(el)
 
     def add_element_4(self):
-        self.m = self.nearest(3 * len(self.val))
+        self.m = self.nearest((3 * len(self.val)))
         self.hash_table = [None] * self.m
         for el in self.val:
             ind = self.hash_1(el)
@@ -92,7 +92,7 @@ class  HashTable:
             self.hash_table[ind] = Node(el)
 
     def add_element_5(self):
-        self.m = self.nearest(3 * len(self.val))
+        self.m = self.nearest(int(3 * len(self.val)))
         self.hash_table = [None] * self.m
         for el in self.val:
             ind = self.hash_1(el)
@@ -114,10 +114,10 @@ class  HashTable:
         return (hash_el + i) % self.m
 
     def hash_4(self, el, i = 0):
-        return (self.hash_1(el) + 5 * i + 3 * (i**2)) % self.m
+        return (self.hash_1(el) + 2 * i + 3 * (i**2)) % self.m
 
     def hash_5(self, el, i = 0):
-        return (self.hash_1(el) + i *self.hash_4(el, i) ) % self.m
+        return (self.hash_1(el) + i *self.hash_3(el, i) ) % self.m
 
     def get_collisions_amount(self):
         return self.counterCollis
@@ -203,18 +203,20 @@ class  HashTable:
 
 
 
-
-m = [8, 4, 6, 8, 19, 7, 4, 13, 13, 12, 9, 20, 20, 18, 1, 18, 13, 10, 6, 10, 16, 18, 19, 4, 3, 19, 14, 9, 16, 3, 15, 1, 5, 15, 10, 16, 19, 1, 2, 16, 16, 4, 3, 14, 4]
-#m = [8, 12, 6, 9, 19]
+#m = [8, 4, 6, 8, 19, 7, 4, 13, 13, 12, 9, 20, 20, 18, 1, 18, 13, 10, 6, 10, 16, 18, 19, 4, 3, 19, 14, 9, 16, 3, 15, 1, 5, 15, 10, 16, 19, 1, 2, 16, 16, 4, 3, 14, 4]
+m = [8, 12, 6, 9, 19]
 #m = [19833, 7843, 10784, 13773, 864, 3981, 12303, 8631, 14725, 1836, 1569, 9365, 3055, 5873, 5002, 11934, 731, 18691, 14110, 11949, 9034, 15442, 11086, 4349, 5497, 8559, 3722, 9374, 4516, 4877, 8309, 12907, 16764, 19847, 9875, 18935, 7628, 4739, 5177, 588, 6812, 2531, 805, 18460, 15712]
 #m = [237, 4, 103, 161, 109, 108, 270, 115, 1, 157, 109, 14, 17, 290, 266, 172, 73, 192, 293, 67, 121, 231, 66, 244, 94, 156, 95, 52, 284, 231, 43, 45, 229, 25, 194, 30, 47, 7, 55, 55, 142, 79, 185, 140, 16, 89, 135, 44, 199, 216]
 #m = [6, 13, 20, 42, 44, 26, 19, 49, 19, 42, 16, 5, 45, 1, 35, 11, 16, 12, 37, 20, 44, 34, 25, 25, 48, 34, 36, 13, 32, 42, 35, 15, 3, 37, 16, 7, 17, 25, 38, 1, 24, 48, 33, 10, 6, 35, 44, 27, 43, 25]
-h = HashTable(3, m)
+h = HashTable(2, m)
 k = HashTable(4, m)
+j = HashTable(3, m)
+l = HashTable(5, m)
 print(k.get_collisions_amount())
-for i in range(5866, 5875):
+for i in range(0,19):
     h_f = h.find_sum(i)
     k_f = k.find_sum(i)
+    print(j.find_sum(i), l.find_sum(i))
     if h_f is not None and k_f is not None:
         if h_f != k_f:
             #print(i, h_f, k_f)
@@ -226,3 +228,4 @@ for i in range(5866, 5875):
         else:
             print("problem k_f ", i, k_f)
             r = 5
+
