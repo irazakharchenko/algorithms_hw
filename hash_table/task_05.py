@@ -75,6 +75,7 @@ class  HashTable:
 
                     ind = self.hash_3(ind, i)
                     i = (1 + i) % self.m
+                    self.counterCollis += 1
 
             self.hash_table[ind] = Node(el)
 
@@ -88,7 +89,7 @@ class  HashTable:
                 while self.hash_table[ind] is not None:
                     ind = self.hash_4(el, i)
                     i = (1 + i)
-
+                    self.counterCollis += 1
             self.hash_table[ind] = Node(el)
 
     def add_element_5(self):
@@ -101,6 +102,7 @@ class  HashTable:
                 while self.hash_table[ind] is not None:
                     ind = self.hash_5(el, i)
                     i = (1 + i)
+                    self.counterCollis += 1
             self.hash_table[ind] = Node(el)
 
 
