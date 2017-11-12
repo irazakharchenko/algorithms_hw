@@ -133,8 +133,7 @@ class  HashTable:
                     el = el_same_hash
 
                     elAdd = s - el.value
-                    if elAdd < 0:
-                        break
+
                     if self.hash_type == 1 :
                         if self.hash_1(el.value) < self.hash_1(elAdd):
                             b = self.find_number_to_add(elAdd)
