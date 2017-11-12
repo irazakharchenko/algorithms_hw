@@ -125,6 +125,7 @@ class  HashTable:
     def find_sum(self, s):
         sums = []
         for el_same_hash in self.hash_table:
+
             if el_same_hash is not None:
                 while el_same_hash is not None:
                     el = el_same_hash
@@ -148,6 +149,8 @@ class  HashTable:
                             sums.append((elAdd, el.value))
 
                     el_same_hash = el_same_hash.next
+            if len(sums) > 0:
+                return sums[0][0], sums[0][1]
 
 
         if len(sums) == 0:
